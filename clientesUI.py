@@ -51,14 +51,31 @@ class ClientesUI:
                 views.cliente_inserir(nome, email, fone)
             else:
                 st.error("Preencha todas as informações!")
-        # st.title("Inserir Cliente")
     
     @staticmethod
     def atualizar():
-        pass
-        # st.title("Atualizar Cliente")
+        clientes = views.cliente_listar() 
+
+        cliente_selecionado = st.selectbox("Escolha o cliente a ter as informações atualizadas: ", (c for c in clientes), index = None, placeholder="Selecione um cliente...")
+
+        nome = st.text_input("Novo nome: ")
+        email = st.text_input("Novo email: ")
+        fone = st.text_input("Novo fone: ")
+
+        if st.button("Atualizar cliente"):
+            if nome and email and fone and cliente_selecionado:
+                views.cliente_atualizar(cliente_selecionado.id, nome, email, fone)
+            else:
+                st.error("Insira todas as informações!")
     
     @staticmethod
     def excluir():
-        pass
-        # st.title("Excluir Cliente")
+        clientes = views.cliente_listar() 
+
+        cliente_selecionado = st.selectbox("Escolha o cliente a ser excluido: ", (c for c in clientes), index = None, placeholder="Selecione um cliente...")
+
+        if st.button("Excluir clientes"):
+            if cliente_selecionado:
+                views.cliente_excluir(cliente_selecionado.id)
+            else:
+                st.error("Selecione um cliente!")

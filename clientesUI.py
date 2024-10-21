@@ -39,6 +39,9 @@ class ClientesUI:
             st.dataframe(clientes_df)
         else:
             st.write("Não há clientes cadastrados")
+        
+        if st.button("Atualizar"):
+            clientes = views.cliente_listar()
 
     @staticmethod
     def inserir():

@@ -38,6 +38,8 @@ class HorariosUI:
                 horarios_data["ID Serviço"].append(s.id_servico)
             
             horarios_df = pd.DataFrame(horarios_data)
+            horarios_df = horarios_df.sort_values(by="Data")
+
             st.dataframe(horarios_df)
         else:
             st.write("Não há horários cadastrados")
@@ -48,9 +50,9 @@ class HorariosUI:
     @staticmethod
     def inserir():
         data_str = st.text_input("Insira a data no formato (dd/mm/aaaa HH:MM): ")
-        confirmado = st.checkbox("O horário está confirmado?", value=False, key="c_inserir")
         id_cliente = st.number_input("Insira o ID do cliente: ", step = 1, placeholder="ID...", value = 0, min_value = 0)
         id_servico = st.number_input("Insira o ID do serviço: ", step = 1, placeholder="ID...", value = 0, min_value = 0)
+        confirmado = st.checkbox("O horário está confirmado?", value=False, key="c_inserir")
 
         if st.button("Inserir horário: ") and data_str:
             data_dt = datetime.strptime(data_str, "%d/%m/%Y %H:%M")
@@ -67,10 +69,10 @@ class HorariosUI:
             selecionado = st.selectbox("Selecione o horário a ser atualizado: ", (h for h in horarios))
 
             data_str = st.text_input("Insira a nova data no formato (dd/mm/aaaa HH:MM): ")
-            confirmado = st.checkbox("O horário está confirmado?", value=False, key="c_atualizar")
             id_cliente = st.number_input("Insira o novo ID do cliente: ", step = 1, placeholder="ID...", value = 0, min_value = 0)
             id_servico = st.number_input("Insira o novo ID do serviço: ", step = 1, placeholder="ID...", value = 0, min_value = 0)
-
+            confirmado = st.checkbox("O horário está confirmado?", value=False, key="c_atualizar")
+            
             if st.button("Atualizar horário"):
                 if data_str:
                     data_dt = datetime.strptime(data_str, "%d/%m/%Y %H:%M")

@@ -7,7 +7,7 @@ class Servico:
         self.valor = valor
         self.duracao = duracao
     def __str__(self):
-        return f"ID: {self.id}; Nome: {self.nome}; Email: {self.email}; Fone: {self.fone}"
+        return f"ID: {self.id}; Descrição: {self.descricao}; Valor: {self.valor}; Duração: {self.duracao}"
 
 class Servicos:
     servicos = []
@@ -56,7 +56,7 @@ class Servicos:
             with open("servicos.json", mode="r") as arquivo:  
                 texto = json.load(arquivo)
                 for obj in texto:   
-                    s = Servico(obj["id"], obj["nome"], obj["email"], obj["fone"])
+                    s = Servico(obj["id"], obj["descricao"], obj["valor"], obj["duracao"])
                     cls.servicos.append(s)
         except FileNotFoundError:
             with open("servicos.json", mode="w") as arquivo:

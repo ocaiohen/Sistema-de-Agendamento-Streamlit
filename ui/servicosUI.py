@@ -17,7 +17,6 @@ class ServicosUI:
             ServicosUI.excluir()
     @staticmethod        
     def listar():
-        # st.title("Listar Clientes")
         servicos = views.servico_listar() 
 
         if servicos:
@@ -25,7 +24,7 @@ class ServicosUI:
                 "ID": [],
                 "Descrição": [],
                 "Valor": [],
-                "Duracao": []
+                "Duração": []
             }
 
             for s in servicos:
@@ -59,7 +58,7 @@ class ServicosUI:
         servicos = views.servico_listar() 
 
         if servicos:
-            servico_selecionado = st.selectbox("Escolha o serviço a ser excluido: ", (s for s in servicos), index = None, placeholder="Selecione um serviço...")
+            servico_selecionado = st.selectbox("Escolha o serviço a ser excluido: ", (s for s in servicos), index = None, placeholder="Selecione um serviço...", key = "sb-atualizar-s")
 
             descricao = st.text_input("Nova descrição: ")
             valor = st.number_input("Novo valor: ")
@@ -67,7 +66,7 @@ class ServicosUI:
 
             if st.button("Atualizar cliente"):
                 if descricao and valor and duracao and servico_selecionado:
-                    views.cliente_atualizar(servico_selecionado.id, descricao, valor, duracao)
+                    views.servico_atualizar(servico_selecionado.id, descricao, valor, duracao)
                 else:
                     st.error("Insira todas as informações!")
         else:
@@ -78,7 +77,7 @@ class ServicosUI:
         servicos = views.servico_listar() 
 
         if servicos:
-            servico_selecionado = st.selectbox("Escolha o serviço a ser excluido: ", (s for s in servicos), index = None, placeholder="Selecione um serviço...")
+            servico_selecionado = st.selectbox("Escolha o serviço a ser excluido: ", (s for s in servicos), index = None, placeholder="Selecione um serviço...", key = "sb-excluir-s")
 
             if st.button("Excluir serviços"):
                 if servico_selecionado:

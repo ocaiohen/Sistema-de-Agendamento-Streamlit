@@ -4,7 +4,7 @@ import views
 class ClientesUI:
     @staticmethod
     def main():
-        st.header("Cadastro de Clientes")
+        st.header("Clientes")
         listar, inserir, atualizar, excluir = st.tabs(["Listar", "Inserir", "Atualizar", "Excluir"])
         
         with listar:

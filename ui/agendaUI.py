@@ -13,9 +13,8 @@ class AgendaUI:
 
         if st.button("Inserir horários"):
             if data_str and horario_inicial_str and horario_final_str and intervalo:
-                data = datetime.strptime(data_str, "%d/%m/%Y")
-                inicio = datetime.strptime(horario_inicial_str, "%H:%M")
-                fim = datetime.strptime(horario_final_str, "%H:%M")
+                inicio = datetime.strptime(f"{data_str} {horario_inicial_str}", "%d/%m/%Y %H:%M")
+                fim = datetime.strptime(f"{data_str} {horario_final_str}", "%d/%m/%Y %H:%M")
 
                 horarios = []
 

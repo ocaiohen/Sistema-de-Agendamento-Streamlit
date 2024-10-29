@@ -79,6 +79,7 @@ class HorariosUI:
 
                     views.horario_atualizar(selecionado.id ,data_dt, confirmado, id_cliente, id_servico)
                     horarios = views.horario_listar()
+                    st.rerun()
         else:
             st.write("Não há horários para atualizar")
 
@@ -90,5 +91,6 @@ class HorariosUI:
         if selecionado and st.button("Excluir horário"):
             views.horario_excluir(selecionado.id)
             horarios = views.horario_listar()
+            st.rerun()
 
     

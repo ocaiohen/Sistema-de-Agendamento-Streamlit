@@ -68,6 +68,7 @@ class ClientesUI:
         if st.button("Atualizar cliente"):
             if nome and email and fone and cliente_selecionado:
                 views.cliente_atualizar(cliente_selecionado.id, nome, email, fone)
+                st.rerun()
             else:
                 st.error("Insira todas as informações!")
     
@@ -80,5 +81,6 @@ class ClientesUI:
         if st.button("Excluir clientes"):
             if cliente_selecionado:
                 views.cliente_excluir(cliente_selecionado.id)
+                st.rerun()
             else:
                 st.error("Selecione um cliente!")

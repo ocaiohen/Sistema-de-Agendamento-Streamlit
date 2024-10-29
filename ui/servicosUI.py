@@ -67,6 +67,7 @@ class ServicosUI:
             if st.button("Atualizar cliente"):
                 if descricao and valor and duracao and servico_selecionado:
                     views.servico_atualizar(servico_selecionado.id, descricao, valor, duracao)
+                    st.rerun()
                 else:
                     st.error("Insira todas as informações!")
         else:
@@ -82,6 +83,7 @@ class ServicosUI:
             if st.button("Excluir serviços"):
                 if servico_selecionado:
                     views.servico_excluir(servico_selecionado.id)
+                    st.rerun()
                 else:
                     st.error("Selecione um serviço")
         else:

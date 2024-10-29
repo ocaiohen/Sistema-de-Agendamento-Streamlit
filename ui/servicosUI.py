@@ -33,13 +33,13 @@ class ServicosUI:
                 servicos_data["Valor"].append(s.valor)
                 servicos_data["Duração"].append(s.duracao)
             
-                servicos_df = pd.DataFrame(servicos_data)
-                st.dataframe(servicos_df)
+            servicos_df = pd.DataFrame(servicos_data)
+            st.dataframe(servicos_df)
         else:
             st.write("Não há serviços cadastrados")
         
         if st.button("Atualizar"):
-            servicos = views.servico_listar()
+            st.rerun()
 
     @staticmethod
     def inserir():

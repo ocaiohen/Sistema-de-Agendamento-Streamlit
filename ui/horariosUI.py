@@ -37,13 +37,13 @@ class HorariosUI:
                 horarios_data["ID Cliente"].append(s.id_cliente)
                 horarios_data["ID Serviço"].append(s.id_servico)
             
-                horarios_df = pd.DataFrame(horarios_data)
-                st.dataframe(horarios_df)
+            horarios_df = pd.DataFrame(horarios_data)
+            st.dataframe(horarios_df)
         else:
             st.write("Não há horários cadastrados")
         
         if st.button("Atualizar"):
-            horarios = views.horario_listar()
+            st.rerun()
 
     @staticmethod
     def inserir():

@@ -41,7 +41,7 @@ class ClientesUI:
             st.write("Não há clientes cadastrados")
         
         if st.button("Atualizar"):
-            clientes = views.cliente_listar()
+            st.rerun()
 
     @staticmethod
     def inserir():

@@ -34,12 +34,12 @@ def servico_excluir(id: int):
 def horario_listar():
     return Horarios.listar()
 def horario_inserir(data: datetime, confirmado: bool, id_cliente: int, id_servico):
-    if data and confirmado and id_cliente and id_servico:
+    if data:
         h = Horario(0, data, confirmado, id_cliente, id_servico)
         Horarios.inserir(h)
         print("horário inserido")
 def horario_atualizar(id: int, data: datetime, confirmado: bool, id_cliente: int, id_servico):
-    if data and confirmado and id_cliente and id_servico:
+    if data:
         h = Horarios.listar_id(id)
         novo_h = Horario(h.id, data, confirmado, id_cliente, id_servico)
         Horarios.atualizar(novo_h)
